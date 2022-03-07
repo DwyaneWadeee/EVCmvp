@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+
+    <com.evc.commonui.NoScrollViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tabs"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tabbar_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bg_main_bottom"
+        android:gravity="fill"
+        app:tabMode="fixed"
+        app:tabMaxWidth="0dp"
+        app:tabBackground="@android:color/transparent"
+        app:tabSelectedTextColor="@color/text_black_light"
+        app:tabTextColor="@color/text_gray_747A86"
+        app:tabRippleColor="@android:color/transparent"
+        />
+
+    <com.evc.commonui.DragFloatActionButton
+        android:id="@+id/fb"
+        android:layout_width="@dimen/dimen_50"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/shape_yellow" />
+</RelativeLayout>

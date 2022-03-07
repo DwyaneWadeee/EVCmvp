@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/loBackgound"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dailog_color_halfbg"
+    android:clickable="true"
+    android:gravity="center">
+
+    <LinearLayout
+        android:id="@+id/lLoadingBg"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:minWidth="100dp"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="20dp">
+
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/loading_progress"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            app:lottie_fileName="loading.json"-->
+<!--            app:lottie_loop="true" />-->
+
+        <ProgressBar
+            android:id="@+id/loading_progress"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/tvLoadingMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textColor="#425563"
+            android:textSize="13dp"
+            tools:text="加载中" />
+
+    </LinearLayout>
+</LinearLayout>

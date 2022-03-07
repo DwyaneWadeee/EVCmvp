@@ -1,0 +1,97 @@
+//app的全局配置在这里
+ext{
+    ////////////////生产环境////////////////////////
+    applicationId = 'com.evc.evcapp'
+    versionCode = 21
+    versionName = '1.3.6'
+    ////////////////生产环境////////////////////////
+
+    ////////////////stg预发布环境////////////////////////
+    stg_applicationId = 'com.evc.evcapp.stg'
+    stg_versionCode = 1
+    stg_versionName = '1.0.0'
+    ////////////////stg环境////////////////////////
+
+    ////////////////测试环境////////////////////////
+    test_applicationId = 'com.evc.evcapp.test'
+    test_versionCode = 1
+    test_versionName = '1.0.0'
+    ////////////////测试环境////////////////////////
+
+    ////////////////开发环境////////////////////////
+    dev_applicationId = 'com.evc.evcapp.dev'
+    dev_versionCode = 1
+    dev_versionName = '1.0.0'
+    ////////////////开发环境////////////////////////
+
+    //强烈推荐总是使用最新的 SDK 进行编译（默认就是最新的）
+    //修改 compileSdkVersion 不会改变运行时的行为。当你修改了 compileSdkVersion 的时候，可能会出现新的编译警告、编译错误，
+    //但新的 compileSdkVersion 不会被包含到 APK 中：它纯粹只是在编译的时候使用。
+    globalCompileSdkVersion = 29
+    //targetSdkVersion 是 Android 提供向前兼容的主要依据,如果平台的API Level高于你的应用程序中的targetSdkVersion属性指定的值，系统会开启兼容行为来确保你的应用程序继续以期望的
+    //形式来运行
+    globalTargetSdkVersion = 26 //这里要用26，不能用28，否则好多地方需要添加FLAG_ACTIVITY_NEW_TASK
+    //这个就是程序运行的最低的要求的Sdk版本号，在低于这个版本号的手机设备上无法安装。
+    globalMinSdkVersion = 21
+    supportLibraryVersion = "1.1.0"
+    kotlin_version = "1.3.72"
+    /*=================================常用的引用============================================*/
+    //supportLibVersion 的头数字是和targetSdkVersion 版本一样的。
+    androidDependencies = [
+            appcompat_v7    : "androidx.appcompat:appcompat:${supportLibraryVersion}",
+            design          : "com.google.android.material:material:${supportLibraryVersion}",
+            recyclerview    : 'androidx.recyclerview:recyclerview:1.0.0-beta01@aar',
+            constraintlayout: 'androidx.constraintlayout:constraintlayout:1.1.3',
+            material        : "com.google.android.material:material:${supportLibraryVersion}",
+            flexbox         : 'com.google.android:flexbox:1.1.0',
+            annotation      : 'androidx.annotation:annotation:1.1.0',
+            multidex        : 'com.android.support:multidex:1.0.1',
+            kotlin          : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+            viewpager2      : "androidx.viewpager2:viewpager2:1.0.0"
+    ]
+
+    /*=================================module中用到的引用============================================*/
+    globalDependencies = [
+            //网络
+            retrofit                      : 'com.squareup.retrofit2:retrofit:2.5.0',
+            converter_gson                : 'com.squareup.retrofit2:converter-gson:2.5.0',
+            adapter_rxjava2               : 'com.squareup.retrofit2:adapter-rxjava2:2.5.0',
+            logging_interceptor           : 'com.squareup.okhttp3:logging-interceptor:3.4.1',
+            logger                        : 'com.orhanobut:logger:2.2.0',
+            XLog                          : "com.elvishew:xlog:1.6.1",
+            //权限
+            rxpermissions                 : 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar',
+            //图片
+            glide                         : 'com.github.bumptech.glide:glide:4.9.0',
+            glide_annotations             : 'com.github.bumptech.glide:annotations:4.9.0',
+            glide_compiler                : 'com.github.bumptech.glide:compiler:4.9.0',
+            glide_okhttp3_integration     : 'com.github.bumptech.glide:okhttp3-integration:4.9.0',
+            glide_trans                   : 'jp.wasabeef:glide-transformations:3.3.0',
+            //RecyclerAdapter
+            BaseRecyclerViewAdapterHelper : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50',
+            //rxjava
+            rxandroid                     : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+            rxjava                        : 'io.reactivex.rxjava2:rxjava:2.0.0',
+            rxlifecycle                   : 'com.trello.rxlifecycle3:rxlifecycle:3.0.0',
+            rxlifecycle_components        : 'com.trello.rxlifecycle3:rxlifecycle-components:3.0.0',
+            rxlifecycle_kotlin            : 'com.trello.rxlifecycle4:rxlifecycle-kotlin:4.0.2',
+            rxlifecycle_kotlin_android_l  : 'com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:4.0.2',
+            fastjson                      : 'com.alibaba:fastjson:1.1.70.android',
+
+
+            //文件下载
+            filedownloader                : 'com.liulishuo.filedownloader:library:1.7.6',
+            //数据库
+            greendao                      : "org.greenrobot:greendao:3.3.0",
+            // 下拉刷新
+            smartrefresh                  : 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2',
+            gson                          : 'com.google.code.gson:gson:2.8.2',
+            img_preview                   : 'com.ycjiang:ImagePreview:2.3.5',
+            custominterceptor             : 'com.github.ihsanbal:LoggingInterceptor:3.1.0',
+            rxbinding                     : 'com.jakewharton.rxbinding3:rxbinding:3.1.0',
+
+
+    ]
+
+
+}

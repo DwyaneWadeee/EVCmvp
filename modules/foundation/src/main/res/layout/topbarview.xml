@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/text_black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/loTopBarBackgound"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/loTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvTopBarTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="end"
+            android:layout_marginBottom="12dp"
+            android:gravity="center|bottom"
+            android:maxLines="1"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:textSize="@dimen/size_topbar_title" />
+
+        <ImageView
+            android:id="@+id/ivTopBarBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:onClick="onTopBarBack"
+            android:layout_alignParentBottom="true"
+            android:padding="12dp"
+            android:src="@drawable/ic_topbar_back_white" />
+
+        <TextView
+            android:id="@+id/tvTopBarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:gravity="center|bottom"
+            android:onClick="onTopBarRightClick"
+            android:paddingLeft="@dimen/padding_topbar_item"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:paddingRight="@dimen/padding_topbar_item"
+            android:textSize="@dimen/dimen_16" />
+
+        <ImageView
+            android:id="@+id/ivTopBarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center|bottom"
+            android:onClick="onTopBarRightClick"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:paddingLeft="@dimen/padding_topbar_item"
+            android:paddingRight="@dimen/padding_topbar_item"
+            android:scaleType="centerInside" />
+
+        <ImageView
+            android:id="@+id/ivSecondTopBarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/ivTopBarRight"
+            android:gravity="center|bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:paddingLeft="@dimen/dp_10"
+            android:scaleType="centerInside"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/dividerView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_topbar_divider"
+            android:layout_alignParentBottom="true"
+            android:background="@color/topbar_color_divider" />
+    </RelativeLayout>
+</RelativeLayout>

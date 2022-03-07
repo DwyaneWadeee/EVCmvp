@@ -1,0 +1,4 @@
+include ':modules:commonui'//include ':toolkit'
+//include ':foundation'
+include ':app',':modules:foundation',':modules:toolkit'
+rootProject.name = "EvcMVPApp"

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EvcMVPApp</string>
+    <string name="activity_toast_no_permission_tib">缺少权限，可能会影响部分体验</string>
+</resources>

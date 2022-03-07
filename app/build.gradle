@@ -1,0 +1,119 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.globalCompileSdkVersion
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        flavorDimensions "default"
+        minSdkVersion rootProject.ext.globalMinSdkVersion
+        targetSdkVersion rootProject.ext.globalTargetSdkVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        //生产环境
+        apppro {
+            applicationId rootProject.ext.applicationId
+            versionCode rootProject.ext.versionCode
+            versionName rootProject.ext.versionName
+            //host地址
+            buildConfigField("String", "API_HOST", "\"http://192.168.10.124:24080/zkhj_uat/\"")
+            manifestPlaceholders = [
+                    APP_LABEL   : "@string/app_name",
+                    APP_ICON    : "@mipmap/ic_launcher",
+                    ROUND_ICON  : "@mipmap/ic_launcher_round"
+            ]
+        }
+        //测试环境
+        apptest {
+            ext.enableCrashlytics = false
+            applicationId rootProject.ext.test_applicationId
+            versionCode rootProject.ext.test_versionCode
+            versionName rootProject.ext.test_versionName
+            buildConfigField("String", "API_HOST", "\"http://192.168.3.100/\"")
+            manifestPlaceholders = [
+                    APP_LABEL   : "@string/app_name_dev",
+                    APP_ICON    : "@mipmap/ic_launcher",
+                    ROUND_ICON  : "@mipmap/ic_launcher_round"
+            ]
+        }
+        //预发布环境
+        apppre {
+            ext.enableCrashlytics = false
+            applicationId rootProject.ext.stg_applicationId
+            versionCode rootProject.ext.stg_versionCode
+            versionName rootProject.ext.stg_versionName
+            buildConfigField("String", "API_HOST","\"http://192.168.10.124:24080/zkhj_uat/\"")
+            manifestPlaceholders = [
+                    APP_LABEL   : "@string/app_name_uat",
+                    APP_ICON    : "@mipmap/ic_launcher",
+                    ROUND_ICON  : "@mipmap/ic_launcher_round"
+            ]
+        }
+    }
+
+    //统一打包命名规则
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "RuiAn_v${variant.versionName}_${variant.versionCode}_${variant.productFlavors.name}_${variant.buildType.name}-${releaseTime()}_base_.apk"
+        }
+    }
+}
+
+//获取编译时间
+static def releaseTime() {
+    return new Date().format("MM-dd-HH-mm", TimeZone.getTimeZone("GMT+08"))
+}
+
+//kotlin 实验性功能
+androidExtensions {
+    experimental = true
+}
+
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation androidDependencies.kotlin
+    implementation androidDependencies.appcompat_v7
+    implementation androidDependencies.constraintlayout
+    implementation androidDependencies.material
+    implementation globalDependencies.rxpermissions
+    implementation globalDependencies.fastjson
+    implementation project( ':modules:foundation')
+    implementation project( ':modules:toolkit')
+    implementation project( ':modules:commonui')
+
+    api globalDependencies.retrofit
+    implementation (globalDependencies.logging_interceptor){
+        exclude group: 'org.json', module: 'json'
+    }
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+}
